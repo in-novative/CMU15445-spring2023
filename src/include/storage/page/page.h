@@ -93,6 +93,10 @@ class Page {
   bool is_dirty_ = false;
   /** Page latch. */
   ReaderWriterLatch rwlatch_;
+
+  friend class BasicPageGuard;
+  friend class ReadPageGuard;
+  friend class WritePageGuard;
 };
 
 }  // namespace bustub

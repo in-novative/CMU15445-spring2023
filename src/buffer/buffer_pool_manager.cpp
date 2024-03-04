@@ -196,6 +196,7 @@ auto BufferPoolManager::DeletePage(page_id_t page_id) -> bool
             latch_.unlock();
             return false;
         }
+        disk_manager_->WritePage(page_id, targetPage->data_);
         page_table_.erase(page_id);
         replacer_->Remove(frameId);
         free_list_.push_back(frameId);
